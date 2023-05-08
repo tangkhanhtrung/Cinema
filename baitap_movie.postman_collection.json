@@ -1,0 +1,1034 @@
+{
+	"info": {
+		"_postman_id": "a2c90089-7b53-4bb7-a46b-ebb44516f62c",
+		"name": "baitap_movie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25592951"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tai_khoan\":\"nguyenquan8\",\r\n    \"ho_ten\":\"NguyenQuan\",\r\n    \"email\":\"quan10@gmail.com\",\r\n    \"so_dt\":\"0123456789\",\r\n    \"mat_khau\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/userAuth/signUp",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"userAuth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "$2b$10$VxvYjpnoeVG8hH/LIATWou8mI3wqFglIlShvCxHYhJdtMwevkz.ee",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"quan9@gmail.com\",\r\n    \"mat_khau\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/userAuth/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"userAuth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lí Người Dùng",
+			"item": [
+				{
+					"name": "Lấy danh sách loại người dùng",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/UserController/GetUserType",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"GetUserType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy danh sách người dùng",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/UserController/GetListUser",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"GetListUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy danh sách người dùng phân trang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\":2\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/UserController/GetListUserDividedPage",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"GetListUserDividedPage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tìm Kiếm nguười dùng",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ho_ten\":\"q\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/UserController/GetUser",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"GetUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tìm kiếm người dùng phân trang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ho_ten\":\"q\",\r\n    \"offset\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/UserController/GetUserDividedPage",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"GetUserDividedPage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin tài khoản",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tai_khoan\":\"quan1\",\r\n    \"mat_khau\":\"abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/UserController/GetInfoUser",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"GetInfoUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Thêm người dùng",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tai_khoan\":\"QuanAdmin2\",\r\n    \"ho_ten\":\"Nguyen Minh Quan\",\r\n    \"email\":\"quanadMIN78919@gmail.com\",\r\n    \"so_dt\":\"0123456789\",\r\n    \"mat_khau\":\"1234\",\r\n    \"loai_nguoi_dung\":\"quanTri\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/UserController/AddUser",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"AddUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chỉnh sửa thông tin người dùng",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tai_khoan\":\"quan4\",\r\n    \"ho_ten\":\"quan555\",\r\n    \"email\":\"quan555@gmail.com\",\r\n    \"so_dt\":\"0123456789\",\r\n    \"mat_khau\":\"12345\",\r\n    \"loai_nguoi_dung\":\"quản tri\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/UserController/UpdateUser/4",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"UpdateUser",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xóa người dùng",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/UserController/DeleteUser/4",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"UserController",
+								"DeleteUser",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lí Phim",
+			"item": [
+				{
+					"name": "Lấy danh sách Banner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoia2hvaW5ndXllbiIsImlhdCI6MTY3Mzc3MDExNywiZXhwIjoxOTg5MzQ2MTE3fQ.xYIRTZAmLMz-6GzfVXEfOpP1PEYGoMEZg5iY0VqD1Io",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tai_khoan\":\"khoi124\",\r\n    \"mat_khau\":\"abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/GetListBanner",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"GetListBanner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy danh sách Phim",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/GetListMovie",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"GetListMovie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy danh sách phim theo tên",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_phim\":\"cap\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/GetListMovieByName",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"GetListMovieByName"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy danh sách phim phân trang",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/GetMovieDividedPage",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"GetMovieDividedPage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin phim theo ngày",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten_phim\":\"wednesday123231231323\",\r\n    \"ngay_khoi_chieu\":\"2023-01-04\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/GetMovieByDate",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"GetMovieByDate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Thêm phim",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"ten_phim\":\"johnwick5\",\r\n   \"trailer\":\"https://youtu.be/Q73UhUTs6y0\",\r\n   \"hinh_anh\":\"https://movienew.cybersoft.edu.vn/hinhanh/wednesday_gp01.jpg\",\r\n   \"mo_ta\":\"hay\",\r\n   \"ngay_khoi_chieu\":\"2012-01-22\",\r\n   \"danh_gia\":\"9\",\r\n   \"hot\":\"true\",\r\n   \"dang_chieu\":\"true\",\r\n   \"sap_chieu\":\"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/AddMovie",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"AddMovie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cập nhật phim",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"ten_phim\":\"pokemon master\",\r\n   \"trailer\":\"https://youtu.be/Q73UhUTs6y0\",\r\n   \"hinh_anh\":\"https://movienew.cybersoft.edu.vn/hinhanh/wednesday_gp01.jpg\",\r\n   \"mo_ta\":\"hay\",\r\n   \"ngay_khoi_chieu\":\"2024-01-22\",\r\n   \"danh_gia\":\"7\",\r\n   \"hot\":\"true\",\r\n   \"dang_chieu\":\"true\",\r\n   \"sap_chieu\":\"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/MovieController/updateMovie/4",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"updateMovie",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xóa Phim",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/MovieController/DeleteMovie/9",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"DeleteMovie",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin Phim",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/MovieController/GetMovieInfo/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"MovieController",
+								"GetMovieInfo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lí Rạp",
+			"item": [
+				{
+					"name": "Lấy thông tin hệ thống rạp  phim",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/TheaterController/GetInfoTheaterSystem/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"TheaterController",
+								"GetInfoTheaterSystem",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin cụm rạp theo mã rạp phim",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/TheaterController/GetInfoTheaterCluster/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"TheaterController",
+								"GetInfoTheaterCluster",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin lịch chiếu phim theo hệ thống rạp",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/TheaterController/getInfoShowTimeTheaterSystem/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"TheaterController",
+								"getInfoShowTimeTheaterSystem",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin lịch chiếu theo mã phim",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/TheaterController/getInfoShowTimeMovie/1",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"TheaterController",
+								"getInfoShowTimeMovie",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quản Lí Đặt Vé",
+			"item": [
+				{
+					"name": "Đặt vé",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"id\":2,\r\n     \"ma_lich_chieu\":3,\r\n     \"ma_ghe\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/BookingController/Booking",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"BookingController",
+								"Booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy thông tin danh sách phòng vé",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/BookingController/GetBookingPlaceList/2",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"BookingController",
+								"GetBookingPlaceList",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tạo lịch chiếu phim",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"ma_rap\":4,\r\n     \"ma_phim\":2,\r\n     \"ngay_gio_chieu\":\"2023-02-22\",\r\n     \"gia_ve\":\"541262\",\r\n     \"ma_ghe\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/BookingController/CreateMovieDate",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"BookingController",
+								"CreateMovieDate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50Ijp7ImlkIjoyMywidGFpX2tob2FuIjoibmd1eWVucXVhbjk5OSIsImhvX3RlbiI6Ik5ndXllblF1YW4iLCJlbWFpbCI6InF1YW43ODlAZ21haWwuY29tIiwic29fZHQiOiIwMTIzNDU2Nzg5IiwibWF0X2toYXUiOiIkMmIkMTAkRW5qajNGdmlEUG9WOG9Jb2hBaE9xdXJrMVpXaTQ5LldTUFdMNnZSOUlSMjBVajNBcE9BQi4iLCJsb2FpX25ndW9pX2R1bmciOiJraGFjaEhhbmcifSwiaWF0IjoxNjc5OTgwMDMyLCJleHAiOjE5OTU1NTYwMzJ9.xRdoLbtloeim4Gx1CPxXoy0PSox_ztSsKAuVW-OlLZw",
+			"type": "string"
+		}
+	]
+}
