@@ -1,5 +1,4 @@
 # CapstoneNodeFinal
------------------------Quân--------------------------------- 
 + SignUp
 + login 
 + Lấy Danh sách loại người dùng
@@ -15,8 +14,6 @@
 + Lấy thông tin cụm rạp theo mã rạp phim
 + Lấy thông tin lịch chiếu phim theo hệ thống rạp
 + Lấy thông tin lịch chiếu theo mã phim
-
---------------------------Trung-----------------------------------
 + Lấy danh sách Banner
 + Lấy danh sách Phim
 + Lấy danh sách phim theo tên
