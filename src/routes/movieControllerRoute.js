@@ -4,7 +4,8 @@ const {getBanner,getMovie,getMovieByName,getMovieByDate,addMovie,updateMovie,get
 const {verifyToken} = require('../middlewares/jwtoken')
 
  MovieControllerRoute.get("/GetListBanner",getBanner);
- MovieControllerRoute.get("/GetListMovie",verifyToken,getMovie);
+ MovieControllerRoute.get("/GetListMovie",getMovie);
+// MovieControllerRoute.get("/GetListMovie",verifyToken,getMovie);
  MovieControllerRoute.get("/GetListMovieByName",verifyToken,getMovieByName);
  MovieControllerRoute.get("/GetMovieDividedPage", verifyToken,getMovieDividedPage);
  MovieControllerRoute.get("/GetMovieByDate",verifyToken,getMovieByDate);
